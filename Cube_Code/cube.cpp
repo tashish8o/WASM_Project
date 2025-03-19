@@ -31,14 +31,14 @@ static const char* fragmentShaderSource = R"(
     }
 )";
 
-// Global variables
+// Globals
 static GLuint program     = 0;
 static GLuint vbo         = 0;
 static GLint  aPosLoc     = -1;
 static GLint  uAngleLoc   = -1;
 static float  angle       = 0.0f;
 
-// Helper function to compile a shader
+// Comile Shader
 GLuint compileShader(GLenum type, const char* source) {
     GLuint shader = glCreateShader(type);
     glShaderSource(shader, 1, &source, nullptr);
@@ -56,7 +56,7 @@ GLuint compileShader(GLenum type, const char* source) {
     return shader;
 }
 
-// Helper function to link shaders into a program
+// link shaders
 GLuint createProgram(const char* vsSource, const char* fsSource) {
     GLuint vs = compileShader(GL_VERTEX_SHADER, vsSource);
     if (!vs) return 0;
@@ -135,7 +135,7 @@ int main() {
         return 1;
     }
 
-    // 3. Look up attribute/uniform locations
+    // 3. Look up attribute locations
     aPosLoc   = glGetAttribLocation(program, "a_position");
     uAngleLoc = glGetUniformLocation(program, "u_angle");
 
